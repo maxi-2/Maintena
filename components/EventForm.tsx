@@ -190,7 +190,7 @@ export function EventForm({ closeDialog }:{ closeDialog:() => void }) {
                     selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
-                      date < new Date("1900-01-01")
+                      date < new Date()
                     }
                     initialFocus
                   />

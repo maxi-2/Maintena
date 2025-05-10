@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useRouter } from "next/navigation"
  
 const formSchema = z.object({
   locationName: z.string().min(2).max(50),
@@ -29,9 +30,13 @@ export function AddAreaForm({ closeDialog }:{ closeDialog:() => void }) {
     resolver: zodResolver(formSchema),
   })
 
+  const router = useRouter()
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
 
     console.log(values)
+
+    
 
     const supabase = createClient()
     
@@ -44,6 +49,7 @@ export function AddAreaForm({ closeDialog }:{ closeDialog:() => void }) {
 
     if (!error) {
       closeDialog()
+      router.refresh()
     }
     
   }
