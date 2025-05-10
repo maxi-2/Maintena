@@ -59,7 +59,7 @@ export default function AddButton() {
         {isMachinePage ? 
         <>
           <DialogHeader>
-            <DialogTitle>Add New Equipment or Work Area</DialogTitle>
+            <DialogTitle>Add New Event</DialogTitle>
           </DialogHeader>
           <EventForm closeDialog={closeDialog}/>
         </>
