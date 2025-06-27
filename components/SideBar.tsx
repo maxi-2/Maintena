@@ -20,7 +20,7 @@ const accountIcon = (
 
 export default function SideBar() {
   return (
-    <section className='bg-primary-dark flex flex-col gap-5 p-5 text-neutral-white h-full'>
+    <section className='bg-primary-dark hidden xl:flex flex-col gap-5 p-5 text-neutral-white h-full'>
         <SideBarLink text="Machines" icon={drillIcon}/>
         <SideBarLink text="Calendar" icon={calendarIcon}/>
         <SideBarLink text="Account" icon={accountIcon}/>

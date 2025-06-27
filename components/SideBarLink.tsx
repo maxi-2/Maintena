@@ -2,17 +2,18 @@
 
 import React from 'react'
 import { useSelectedStore } from '@/store/sideBarSelectedStore'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
-export default function SideBarLink({ text, icon }:{ text:string, icon: React.ReactNode }) {
+export default function SideBarLink({ text, icon, link }:{ text:string, icon: React.ReactNode, link: string }) {
 
   const { selected } = useSelectedStore()
 
   return (
-    <div className={cn(`${selected === text.toLowerCase() && "border-1 border-neutral-white"}`,'flex items-center gap-2 px-8 py-2 text-base rounded-[0.625rem]')}>
+    <Link href={`/app/${link ? link : "machines"}`} className={cn(`${selected === text.toLowerCase() && "border-1 border-neutral-white"}`,'flex items-center gap-2 px-8 py-2 text-base rounded-[0.625rem]')}>
         {icon}
         <p>{text}</p>
-    </div>
+    </Link>
   )
 }

@@ -2,8 +2,8 @@ import React from 'react'
 import { createClient } from '@/lib/server'
 import EventsList from '@/components/EventsList'
 import DeleteBtn from '@/components/DeleteBtn'
-
-
+import ImageUpload from '@/components/ImageUpload';
+import Image from 'next/image';
 
 type PageProps = {
     params: Promise<{
@@ -19,7 +19,13 @@ type PageProps = {
 
     const { data: [ data ] } = await supabase
         .from("Machine")
-        .select("machine_name, manufacturer, description").eq("id", id).limit(1)
+        .select("machine_name, manufacturer, description, image_path").eq("id", id).limit(1)
+
+    const { data: imageURL, error: imageError} = await supabase
+      .storage
+      .from("machine-images")
+      .createSignedUrl(data.image_path,60)
+
 
   return (
     <div className="flex flex-col gap-8 text-primary-dark w-full">
@@ -29,8 +35,22 @@ type PageProps = {
                 <h1 className='text-xl font-medium mr-auto'>{data.manufacturer} {data.machine_name}</h1>
                 <DeleteBtn machineId={id}/>
             </div>
+
+            {imageURL ? 
+            <Image src={imageURL.signedUrl}
+            height={300}
+            width={200}
+            
+            alt="User uploaded image of this current machine"
+            loading='lazy'
+            />
+            :
+            <p>No image has been assiged to this machine.</p>
+            }
             
             <p>{data.description}</p>
+
+            <ImageUpload machineId={id}/>
 
         </div>
 
@@ -42,8 +62,6 @@ type PageProps = {
                 </div>
             </div>
 
-        
-        
     </div>
     
   )

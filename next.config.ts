@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
     // This ignores the TypeScript errors during build
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "psuvigwmvtqoixkeuhxi.supabase.co",
+        pathname: "/**", // allows all paths
+      },
+    ],
+  },
+  
 };
 
 export default nextConfig;

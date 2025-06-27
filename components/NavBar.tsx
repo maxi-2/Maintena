@@ -6,7 +6,6 @@ import AddButton from './AddButton'
 
 import Link from 'next/link'
 
-
 export default function NavBar() {
   
   return (
@@ -16,11 +15,11 @@ export default function NavBar() {
             <Image height={328} width={1230} style={{ width: '165px', height: "auto"}} priority={true} alt="logo" src="/logo.webp"/>
           </Link>
             
-            <AddButton/>
-            
-            <div className='ml-auto'>
-              <ProfileName/>
-            </div>
+          <AddButton/>
+          
+          <div className='ml-auto'>
+            <ProfileName/>
+          </div>
             
         </nav>
   )

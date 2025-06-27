@@ -44,7 +44,6 @@ export default function AddButton() {
 
   const page = pathname.split("/")
 
-  console.log(page)
   return (
     <Dialog open={open} onOpenChange={setOpen}>
 
