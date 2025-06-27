@@ -21,7 +21,7 @@ type PageProps = {
         .from("Machine")
         .select("machine_name, manufacturer, description, image_path").eq("id", id).limit(1)
 
-    const { data: imageURL, error: imageError} = await supabase
+    const { data: imageURL } = await supabase
       .storage
       .from("machine-images")
       .createSignedUrl(data.image_path,60)
