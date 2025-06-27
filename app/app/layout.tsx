@@ -18,7 +18,7 @@ export default async function RootLayout({
   
   return (
 
-    <div className="flex flex-col h-screen text-xs sm:text-sm md:text-base">
+    <div className="flex flex-col h-screen">
 
       <NavBar/>
 

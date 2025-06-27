@@ -19,24 +19,23 @@ export default async function MachineArea({locationID, locationName}:MachineArea
   .eq("location_id",locationID)
 
   return (
-    <div>
-      <div className='flex gap-3 items-center mb-3 sm:mb-5'>
+    <>
+      <div className="flex flex-col gap-5 w-full">
+        <div className='flex gap-3 items-center'>
           <h1 className="text-xl font-medium">{locationName}</h1>
           { data && data.length === 0 &&
             <DeleteAreaBtn locationId={locationID}/> 
             }
 
+        </div>
+        
+        { data && data.length > 0
+        ? data.map((machine,key) => (
+          <Machine name={`${machine.manufacturer} ${machine.machine_name}`} id={machine.id} key={key}/>
+        ))
+        :<p>No equipement has been registered to this area.</p>}
+        
       </div>
-
-      <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-col sm:gap-5 w-full">
-      
-          { data && data.length > 0
-          ? data.map((machine,key) => (
-            <Machine name={`${machine.manufacturer} ${machine.machine_name}`} id={machine.id} key={key}/>
-          ))
-          :<p>No equipement has been registered to this area.</p>}
-
-      </div>
-    </div>
+    </>
   )
 }

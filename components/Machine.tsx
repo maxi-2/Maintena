@@ -37,13 +37,13 @@ export default async function Machine({ name, id }:machineProps) {
   return (
     <Link 
       href={`/app/machines/${id}`}
-      className="flex-col flex gap-3 sm:gap-0 sm:flex-row sm:relative sm:items-center justify-between w-full hover:brightness-80 transition duration-300 bg-card px-5 py-2 sm:px-10 sm:py-5 rounded-[0.625rem] shadow-[0_3px_7px_rgba(0,0,0,0.25)]"
+      className="flex relative justify-between items-center w-full hover:brightness-80 transition duration-300 bg-card px-10 py-5 rounded-[0.625rem] shadow-[0_3px_7px_rgba(0,0,0,0.25)]"
       >
-          <p className='sm:z-10 font-semibold'>{name}</p>
-          <div className='flex sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:whitespace-nowrap'>
+          <p className='z-10 font-semibold'>{name}</p>
+          <div className='flex absolute left-1/2 -translate-x-1/2 whitespace-nowrap'>
             <p>Scheduled Events:</p> &nbsp; <p className='font-normal'>{count}</p>
           </div>
-          <div className='sm:z-10'>
+          <div className='z-10'>
             <DateColour daysTillNextEvent={daysTillNextEvent} />
           </div>
     </Link>
